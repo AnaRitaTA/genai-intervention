@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intervention Design & Co-Creation Workshop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Header section */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-genai {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        .divider {
+            border-top: 4px solid #1c3d72;
+            margin: 20px 0;
+        }
+        .subtitle {
+            color: #6c8a2b;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+        h1 {
+            color: #1c3d72;
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .italic-desc {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .partners {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Tabs styling */
+        .tab {
+            overflow: hidden;
+            border-bottom: 2px solid #1c3d72;
+            background-color: #f0f4f8;
+            display: flex;
+        }
+        .tab button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 24px;
+            transition: 0.3s;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #555;
+            flex: 1;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #1c3d72;
+            color: white;
+        }
+
+        /* Tab content */
+        .tabcontent {
+            display: none;
+            padding: 30px 20px;
+            animation: fadeEffect 0.5s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Overview styling */
+        .wp6-intro h2 {
+            color: #1c3d72;
+            margin-top: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .wp6-intro h2:first-child {
+            margin-top: 0;
+        }
+        .wp6-intro h3 {
+            color: #6c8a2b;
+            margin-top: 20px;
+        }
+        .wp6-intro ul {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* Table styling for modules */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1c3d72;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Form styling */
+        .template-form {
+            text-align: left;
+        }
+        .form-section {
+            margin-bottom: 25px;
+        }
+        .form-section h3 {
+            background-color: #f0f4f8;
+            padding: 10px;
+            color: #1c3d72;
+            border-left: 4px solid #6c8a2b;
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .description {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .radio-group {
+            margin-top: 10px;
+        }
+        .radio-group label {
+            display: inline-block;
+            font-weight: normal;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        .submit-btn {
+            background-color: #1c3d72;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .submit-btn:hover {
+            background-color: #122b50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <img src="logo2.png"GeNAI Logo" class="logo-genai">
+        <div class="divider"></div>
+        <p class="subtitle">Horizon Europe GeNAI · Work Package 6</p>
+        <h1>Intervention Design & Co-Creation Workshop</h1>
+        <p class="italic-desc">Structuring AI literacy interventions across STEM disciplines, learning goals, experimental arms, and platform requirements.</p>
+        <p class="partners"><strong>Lead:</strong> IE-UL (Instituto de Educação, ULisboa) &nbsp;|&nbsp; <strong>Co-Lead:</strong> UNIC · Core Partners: UU, UJA, HU, IPN, ICSE</p>
+    </div>
+
+    <!-- TABS BUTTONS -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Overview')" id="defaultOpen">Project Overview</button>
+        <button class="tablinks" onclick="openTab(event, 'Template')">Intervention Template</button>
+    </div>
+
+    <!-- TAB 1: OVERVIEW -->
+    <div id="Overview" class="tabcontent wp6-intro">
+        
+        <h2>WP6 AI Operational Role by Experimental Arm</h2>
+        <p>The design principle relies on instructional support differences, not the tool. Arms A and B use the same masked model on the same platform to avoid confounding the training effect.</p>
+        <ul>
+            <li><strong>Arm A (Experimental) - Supported AI Use:</strong> Curricular tasks paired with explicit AI literacy instruction and guided prompting scaffolds.</li>
+            <li><strong>Arm B (Active Control) - Unsupported AI Use:</strong> AI use without instruction. Same AI as Arm A, but no prompt coaching or literacy guidance.</li>
+            <li><strong>Arm C (Baseline Control) - No AI in Class:</strong> Identical curricular learning goals taught via traditional textbooks, inquiry sheets, and teacher instruction (Zero AI Integration). Control arms B and C will receive the instructional materials after the study.</li>
+        </ul>
+
+        <h2>The 3-Session Intervention Sequence</h2>
+        <p><em>Session format: ~3 hours per session, 3–5 weeks apart. Each session opens with a pre-test and closes with a post-test.</em></p>
+        <ul>
+            <li><strong>Session 1: Prompt Engineering.</strong> Foundational interaction, goal-oriented prompt structuring, and iterative dialogue in STEM tasks.</li>
+            <li><strong>Session 2: Critical AI Literacy.</strong> Identifying flawed outputs, misconceptions and bias; reflecting on the accuracy and ethical implications of AI outputs.</li>
+            <li><strong>Session 3: Authentic Inquiry.</strong> Collaborative problem solving on real-life challenges under uncertainty with evidence synthesis. (Includes a science literacy assessment).</li>
+        </ul>
+
+        <h2>Pedagogical Framework</h2>
+        <ul>
+            <li><strong>Inquiry-Based Learning (IBL):</strong> Students formulate scientific hypotheses, analyze phenomena, and construct evidence-based arguments rather than passively receiving answers.</li>
+            <li><strong>Real-Life Socio-Scientific Relevance:</strong> Tasks anchor in authentic challenges (climate, plastic waste, energy) to enhance girls' and underrepresented learners' engagement.</li>
+            <li><strong>Cognitive Load & Epistemic Trust:</strong> Balancing the benefits of automated support with critical evaluation to foster metacognitive self-regulation.</li>
+        </ul>
+
+        <h2>The 6 Intervention Modules</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Discipline</th>
+                    <th>Lead Partner</th>
+                    <th>Cohort: 12–13 Years Old</th>
+                    <th>Cohort: 16–17 Years Old</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mathematics</strong></td>
+                    <td>Utrecht University (UU)</td>
+                    <td>Pattern reasoning & proportional modeling</td>
+                    <td>Statistical reasoning & functional graphs</td>
+                </tr>
+                <tr>
+                    <td><strong>Science</strong></td>
+                    <td>Univ. of Jaén (UJA)</td>
+                    <td>Ecosystems & energy flows</td>
+                    <td>Complex socio-scientific inquiry & climate</td>
+                </tr>
+                <tr>
+                    <td><strong>Technology & Eng.</strong></td>
+                    <td>Hacettepe Univ. (HU)</td>
+                    <td>Basic algorithmic design & structures</td>
+                    <td>Iterative system design & engineering trade-offs</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Technical & Platform Requirements</h2>
+        <ul>
+            <li><strong>Benchmark Needs (WP5):</strong> Scaffolding metric (hints vs. answers), misconception catalogs (failure patterns for Session 2), and curricular coverage validation.</li>
+            <li><strong>Platform Needs (WP2):</strong> Telemetry logging (timestamped prompt logs for WP7), vendor masking (neutral interface, no branding), and GDPR pseudonymity (unique IDs).</li>
+        </ul>
+    </div>
+
+    <!-- TAB 2: TEMPLATE FORM -->
+    <div id="Template" class="tabcontent template-form">
+        <h2>Intervention Development Form</h2>
+        <p>Please fill out your team's details and intervention design below based on the working table discussions. The data will be automatically exported for the work session.</p>
+        
+        <form id="wp6-form" action="https://script.google.com/macros/s/AKfycbw9W45zg8MM06oC8P13TL9stc90QOa7_e_IyJ67mgkLlzz2FrAstbHRNoKduyVhNYYQ/exec" method="POST">
+            
+            <div class="form-section">
+                <h3>1. Team responsible for development</h3>
+                
+                <label>GROUP / LEAD PARTNER RESPONSIBLE FOR DEVELOPMENT</label>
+                <input type="text" name="leadPartner" placeholder="e.g., UU, UJA, HU" required>
+
+                <label>MODULE NUMBER/ DESIGNATION</label>
+                <input type="text" name="moduleNumber">
+
+                <label>SUBJECT</label>
+                <input type="text" name="subject" placeholder="Math, Science, or Tech & Eng">
+
+                <label>TOPIC</label>
+                <input type="text" name="topic">
+
+                <label>AGE GROUP</label>
+                <select name="ageGroup">
+                    <option value="" disabled selected>Select age cohort...</option>
+                    <option value="12-13">12–13 Years Old</option>
+                    <option value="16-17">16–17 Years Old</option>
+                </select>
+
+                <label>ARM / CONDITION</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="armCondition" value="Arm A"> Arm A — Experimental: Supported AI Use</label><br>
+                    <label><input type="radio" name="armCondition" value="Arm B"> Arm B — Active Control: Unsupported AI Use</label><br>
+                    <label><input type="radio" name="armCondition" value="Arm C"> Arm C — Baseline Control: No AI in Class</label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>2. Intervention Design</h3>
+                
+                <label>LEARNING GOALS</label>
+                <span class="description">List the learning objectives / intervention goals (what is intended to be achieved).</span>
+                <textarea name="learningGoals"></textarea>
+
+                <label>CONTEXT</label>
+                <span class="description">Describe the real-world scenario or problem this activity is anchored in (e.g., climate, energy).</span>
+                <textarea name="context"></textarea>
+
+                <label>Instructional concept</label>
+                <span class="description">e.g. inquiry-based learning, problem-solving, hands-on experiment, debate, etc.</span>
+                <textarea name="instructionalConcept"></textarea>
+                
+                <label>GENERAL DESCRIPTION OF THE INTERVENTION</label>
+                <span class="description">Provide a brief overall description of the intervention (tasks) before detailing the three sessions below.</span>
+                <textarea name="generalDescription"></textarea>
+            </div>
+
+            <div class="form-section">
+                <h3>Session Structure — 3-Session Model</h3>
+                <span class="description">Note: Each session should be designed for ~3 hours, including pre- and post-tests.</span>
+                
+                <label>SESSION 1 — PROMPT ENGINEERING</label>
+                <span class="description">Describe this session based on the assigned Arm. (Arm A: goal-oriented structuring; Arm B: no coaching; Arm C: traditional instruction).</span>
+                <textarea name="session1"></textarea>
+
+                <label>SESSION 2 — CRITICAL AI LITERACY</label>
+                <span class="description">Describe this session based on the assigned Arm. (Focus on flawed outputs, misconceptions, and ethics for Arms A & B).</span>
+                <textarea name="session2"></textarea>
+
+                <label>SESSION 3 — AUTHENTIC INQUIRY</label>
+                <span class="description">Describe this session based on the assigned Arm. (Collaborative problem solving on real-life challenges).</span>
+                <textarea name="session3"></textarea>
+            </div>
+
+            <div class="form-section">
+                <h3>3. AI Use & Implementation Protocols</h3>
+                
+                <label>AI TOOLS TO BE USED</label>
+                <span class="description">List the AI tool(s)/platform(s) that may be used in this activity. Note: leave blank / mark N/A if this activity is Arm C (No AI).</span>
+                <input type="text" name="aiTools">
+
+                <label>HOW WILL THE AI TOOL(S) BE USED</label>
+                <span class="description">Describe how the AI tool(s) will be integrated into the activity. What is the specific operational role?</span>
+                <textarea name="aiUsage"></textarea>
+            </div>
+
+            <div class="form-section">
+                <h3>5. Platform & Benchmark Requirements</h3>
+                <label>BENCHMARK NEEDS (WP5 / ICSE) & PLATFORM NEEDS (WP2 / NTNU)</label>
+                <span class="description">Specify what this intervention requires. e.g., Scaffolding metric (hints vs. answers), misconception catalogs, telemetry logging, vendor masking, specific functionalities (images, formulas).</span>
+                <textarea name="platformNeeds"></textarea>
+            </div>
+            
+            <div class="form-section">
+                <h3>6. Logistics & Evaluation</h3>
+                <label>RESOURCES / MATERIALS NEEDED</label>
+                <span class="description">List materials, equipment, and consideration for low-bandwidth/offline options.</span>
+                <textarea name="resources"></textarea>
+                
+                <label>EXPECTED RESULTS / EVALUATION</label>
+                <span class="description">Describe how the results will be evaluated (including pre/post-tests and science literacy assessment in Session 3).</span>
+                <textarea name="evaluation"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Intervention Draft</button>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript for Tabs functionality -->
+<script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Open the first tab by default when the page loads
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>
