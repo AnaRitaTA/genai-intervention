@@ -112,25 +112,6 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        
-        /* Table styling for modules */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #1c3d72;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
 
         /* Form styling */
         .template-form {
@@ -181,6 +162,38 @@
             margin-right: 20px;
             margin-top: 5px;
         }
+        
+        /* Updated Reflection Box Styling for better alignment */
+        .reflection-box {
+            background-color: #e8f0fe;
+            border: 1px solid #cddc39;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .reflection-box label {
+            display: flex;
+            align-items: flex-start;
+            font-weight: normal;
+            margin-top: 12px;
+            color: #202124;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+        .reflection-box input[type="checkbox"] {
+            /* Prevents the checkbox from shrinking and adds spacing */
+            flex-shrink: 0; 
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+        .reflection-box span {
+            /* Ensures the text stays in a block next to the checkbox */
+            display: block;
+        }
+
         .submit-btn {
             background-color: #1c3d72;
             color: white;
@@ -203,9 +216,8 @@
 <div class="container">
     <!-- HEADER -->
     <div class="header">
-        <img src="logo2.png"GeNAI Logo" class="logo-genai">
         <div class="divider"></div>
-        <p class="subtitle">Horizon Europe GeNAI · Work Package 6</p>
+        <p class="subtitle">Horizon Europe GeNAI</p>
         <h1>Intervention Design & Co-Creation Workshop</h1>
         <p class="italic-desc">Structuring AI literacy interventions across STEM disciplines, learning goals, experimental arms, and platform requirements.</p>
         <p class="partners"><strong>Lead:</strong> IE-UL (Instituto de Educação, ULisboa) &nbsp;|&nbsp; <strong>Co-Lead:</strong> UNIC · Core Partners: UU, UJA, HU, IPN, ICSE</p>
@@ -219,90 +231,40 @@
 
     <!-- TAB 1: OVERVIEW -->
     <div id="Overview" class="tabcontent wp6-intro">
-        
-        <h2>WP6 AI Operational Role by Experimental Arm</h2>
-        <p>The design principle relies on instructional support differences, not the tool. Arms A and B use the same masked model on the same platform to avoid confounding the training effect.</p>
+        <h2>Three-Arm Cluster-Randomised Design</h2>
         <ul>
-            <li><strong>Arm A (Experimental) - Supported AI Use:</strong> Curricular tasks paired with explicit AI literacy instruction and guided prompting scaffolds.</li>
-            <li><strong>Arm B (Active Control) - Unsupported AI Use:</strong> AI use without instruction. Same AI as Arm A, but no prompt coaching or literacy guidance.</li>
-            <li><strong>Arm C (Baseline Control) - No AI in Class:</strong> Identical curricular learning goals taught via traditional textbooks, inquiry sheets, and teacher instruction (Zero AI Integration). Control arms B and C will receive the instructional materials after the study.</li>
+            <li><strong>GROUP A:</strong> AI use in class with instructional support (AI + instruction)</li>
+            <li><strong>GROUP B:</strong> AI use in class without instructional support (AI, no instruction)</li>
+            <li><strong>GROUP C (BASELINE CONTROL):</strong> No AI use in class (baseline) (No AI Integration)</li>
         </ul>
 
-        <h2>The 3-Session Intervention Sequence</h2>
-        <p><em>Session format: ~3 hours per session, 3–5 weeks apart. Each session opens with a pre-test and closes with a post-test.</em></p>
+        <h2>The 3-Sessions Intervention</h2>
         <ul>
-            <li><strong>Session 1: Prompt Engineering.</strong> Foundational interaction, goal-oriented prompt structuring, and iterative dialogue in STEM tasks.</li>
-            <li><strong>Session 2: Critical AI Literacy.</strong> Identifying flawed outputs, misconceptions and bias; reflecting on the accuracy and ethical implications of AI outputs.</li>
-            <li><strong>Session 3: Authentic Inquiry.</strong> Collaborative problem solving on real-life challenges under uncertainty with evidence synthesis. (Includes a science literacy assessment).</li>
-        </ul>
-
-        <h2>Pedagogical Framework</h2>
-        <ul>
-            <li><strong>Inquiry-Based Learning (IBL):</strong> Students formulate scientific hypotheses, analyze phenomena, and construct evidence-based arguments rather than passively receiving answers.</li>
-            <li><strong>Real-Life Socio-Scientific Relevance:</strong> Tasks anchor in authentic challenges (climate, plastic waste, energy) to enhance girls' and underrepresented learners' engagement.</li>
-            <li><strong>Cognitive Load & Epistemic Trust:</strong> Balancing the benefits of automated support with critical evaluation to foster metacognitive self-regulation.</li>
-        </ul>
-
-        <h2>The 6 Intervention Modules</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Discipline</th>
-                    <th>Lead Partner</th>
-                    <th>Cohort: 12–13 Years Old</th>
-                    <th>Cohort: 16–17 Years Old</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Mathematics</strong></td>
-                    <td>Utrecht University (UU)</td>
-                    <td>Pattern reasoning & proportional modeling</td>
-                    <td>Statistical reasoning & functional graphs</td>
-                </tr>
-                <tr>
-                    <td><strong>Science</strong></td>
-                    <td>Univ. of Jaén (UJA)</td>
-                    <td>Ecosystems & energy flows</td>
-                    <td>Complex socio-scientific inquiry & climate</td>
-                </tr>
-                <tr>
-                    <td><strong>Technology & Eng.</strong></td>
-                    <td>Hacettepe Univ. (HU)</td>
-                    <td>Basic algorithmic design & structures</td>
-                    <td>Iterative system design & engineering trade-offs</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Technical & Platform Requirements</h2>
-        <ul>
-            <li><strong>Benchmark Needs (WP5):</strong> Scaffolding metric (hints vs. answers), misconception catalogs (failure patterns for Session 2), and curricular coverage validation.</li>
-            <li><strong>Platform Needs (WP2):</strong> Telemetry logging (timestamped prompt logs for WP7), vendor masking (neutral interface, no branding), and GDPR pseudonymity (unique IDs).</li>
+            <li><strong>1. Foundational AI Interaction:</strong> Students practice prompt formulation, engage with AI explanations, and solve curriculum-aligned tasks. Aim: to establish AI as a learning tool and build prompt engineering competence.</li>
+            <li><strong>2. Critical AI Literacy:</strong> Students work with flawed AI outputs, evaluate the reliability of claims using STEM knowledge, and learn to apply verification strategies. Aim: foster critical AI use and epistemic Awareness.</li>
+            <li><strong>3. Authentic Inquiry:</strong> Students tackle real-world STEM problems (e.g., plastic consumption), synthesising AI-generated and external information to construct arguments under uncertainty. Aim: To develop interdisciplinary reasoning and scientific literacy.</li>
         </ul>
     </div>
 
     <!-- TAB 2: TEMPLATE FORM -->
     <div id="Template" class="tabcontent template-form">
         <h2>Intervention Development Form</h2>
-        <p>Please fill out your team's details and intervention design below based on the working table discussions. The data will be automatically exported for the work session.</p>
         
-        <form id="wp6-form" action="https://script.google.com/macros/s/AKfycbw9W45zg8MM06oC8P13TL9stc90QOa7_e_IyJ67mgkLlzz2FrAstbHRNoKduyVhNYYQ/exec" method="POST">
+        <form id="intervention-form" action="https://script.google.com/macros/s/AKfycbzIcCs_qux-ju59eGzadeEYx784zj-mDm9YWfZDt4ZnLabpPf9o0SRrmMWt0lRiO1m8/exec" method="POST">
             
             <div class="form-section">
                 <h3>1. Team responsible for development</h3>
                 
-                <label>GROUP / LEAD PARTNER RESPONSIBLE FOR DEVELOPMENT</label>
-                <input type="text" name="leadPartner" placeholder="e.g., UU, UJA, HU" required>
+                <label>WORKING GROUP / LEAD PARTNER</label>
+                <select name="leadPartner" required>
+                    <option value="" disabled selected>Select the working group...</option>
+                    <option value="Group 1">Group 1 · Mathematics - Leader: Utrecht University (UU)</option>
+                    <option value="Group 2">Group 2 · Science - Leader: Univ. of Jaén (UJA)</option>
+                    <option value="Group 3">Group 3 · Technology and Engineering - Leader: Hacettepe Univ. (HU)</option>
+                </select>
 
-                <label>MODULE NUMBER/ DESIGNATION</label>
-                <input type="text" name="moduleNumber">
-
-                <label>SUBJECT</label>
-                <input type="text" name="subject" placeholder="Math, Science, or Tech & Eng">
-
-                <label>TOPIC</label>
-                <input type="text" name="topic">
+                <label>MODULE DESIGNATION & TOPIC</label>
+                <input type="text" name="moduleNumber" placeholder="e.g. Module 1: Ecosystems & Energy Flows">
 
                 <label>AGE GROUP</label>
                 <select name="ageGroup">
@@ -311,11 +273,11 @@
                     <option value="16-17">16–17 Years Old</option>
                 </select>
 
-                <label>ARM / CONDITION</label>
+                <label>THREE-ARM CLUSTER-RANDOMISED DESIGN</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="armCondition" value="Arm A"> Arm A — Experimental: Supported AI Use</label><br>
-                    <label><input type="radio" name="armCondition" value="Arm B"> Arm B — Active Control: Unsupported AI Use</label><br>
-                    <label><input type="radio" name="armCondition" value="Arm C"> Arm C — Baseline Control: No AI in Class</label>
+                    <label><input type="radio" name="armCondition" value="Group A"> GROUP A - AI use in class with instructional support</label><br>
+                    <label><input type="radio" name="armCondition" value="Group B"> GROUP B - AI use in class without instructional support</label><br>
+                    <label><input type="radio" name="armCondition" value="Group C"> GROUP C (BASELINE CONTROL) - No AI use in class (baseline)</label>
                 </div>
             </div>
 
@@ -323,16 +285,12 @@
                 <h3>2. Intervention Design</h3>
                 
                 <label>LEARNING GOALS</label>
-                <span class="description">List the learning objectives / intervention goals (what is intended to be achieved).</span>
+                <span class="description">List the learning goals (what is intended to be achieved/learned).</span>
                 <textarea name="learningGoals"></textarea>
 
                 <label>CONTEXT</label>
-                <span class="description">Describe the real-world scenario or problem this activity is anchored in (e.g., climate, energy).</span>
+                <span class="description">Describe the real-world scenario or problem this module is anchored in (e.g., climate, energy).</span>
                 <textarea name="context"></textarea>
-
-                <label>Instructional concept</label>
-                <span class="description">e.g. inquiry-based learning, problem-solving, hands-on experiment, debate, etc.</span>
-                <textarea name="instructionalConcept"></textarea>
                 
                 <label>GENERAL DESCRIPTION OF THE INTERVENTION</label>
                 <span class="description">Provide a brief overall description of the intervention (tasks) before detailing the three sessions below.</span>
@@ -340,50 +298,84 @@
             </div>
 
             <div class="form-section">
-                <h3>Session Structure — 3-Session Model</h3>
+                <h3>3. The 3-Sessions Intervention-Description</h3>
                 <span class="description">Note: Each session should be designed for ~3 hours, including pre- and post-tests.</span>
                 
-                <label>SESSION 1 — PROMPT ENGINEERING</label>
-                <span class="description">Describe this session based on the assigned Arm. (Arm A: goal-oriented structuring; Arm B: no coaching; Arm C: traditional instruction).</span>
+                <label>1. FOUNDATIONAL AI INTERACTION</label>
+                <span class="description">Students practice prompt formulation, engage with AI explanations, and solve curriculum-aligned tasks. Aim: to establish AI as a learning tool and build prompt engineering competence.</span>
                 <textarea name="session1"></textarea>
 
-                <label>SESSION 2 — CRITICAL AI LITERACY</label>
-                <span class="description">Describe this session based on the assigned Arm. (Focus on flawed outputs, misconceptions, and ethics for Arms A & B).</span>
+                <label>2. CRITICAL AI LITERACY</label>
+                <span class="description">Students work with flawed AI outputs, evaluate the reliability of claims using STEM knowledge, and learn to apply verification strategies. Aim: foster critical AI use and epistemic Awareness.</span>
                 <textarea name="session2"></textarea>
 
-                <label>SESSION 3 — AUTHENTIC INQUIRY</label>
-                <span class="description">Describe this session based on the assigned Arm. (Collaborative problem solving on real-life challenges).</span>
+                <label>3. AUTHENTIC INQUIRY</label>
+                <span class="description">Students tackle real-world STEM problems (e.g., plastic consumption), synthesising AI-generated and external information to construct arguments under uncertainty. Aim: To develop interdisciplinary reasoning and scientific literacy.</span>
                 <textarea name="session3"></textarea>
             </div>
 
             <div class="form-section">
-                <h3>3. AI Use & Implementation Protocols</h3>
+                <h3>4. Tool Integration & Feasibility</h3>
                 
-                <label>AI TOOLS TO BE USED</label>
-                <span class="description">List the AI tool(s)/platform(s) that may be used in this activity. Note: leave blank / mark N/A if this activity is Arm C (No AI).</span>
-                <input type="text" name="aiTools">
+                <label>SUGGESTED AI TOOLS</label>
+                <span class="description">List the AI tools, models, or platforms recommended for this module (e.g., ChatGPT, Claude, custom GPTs).</span>
+                <input type="text" name="suggestedAITools" placeholder="e.g. ChatGPT (GPT-4), Claude 3, etc.">
 
-                <label>HOW WILL THE AI TOOL(S) BE USED</label>
-                <span class="description">Describe how the AI tool(s) will be integrated into the activity. What is the specific operational role?</span>
-                <textarea name="aiUsage"></textarea>
-            </div>
-
-            <div class="form-section">
-                <h3>5. Platform & Benchmark Requirements</h3>
-                <label>BENCHMARK NEEDS (WP5 / ICSE) & PLATFORM NEEDS (WP2 / NTNU)</label>
-                <span class="description">Specify what this intervention requires. e.g., Scaffolding metric (hints vs. answers), misconception catalogs, telemetry logging, vendor masking, specific functionalities (images, formulas).</span>
+                <label style="margin-top: 25px;">DESIGN REFLECTION & FEASIBILITY CHECKLIST</label>
+                <span class="description">Reflect on the extent to which the proposed intervention aligns with relevant pedagogical, ethical, and technical considerations.</span>
+                
+                <div class="reflection-box">
+                    <label>
+                        <input type="checkbox" name="ref_pedagogy1"> 
+                        <span><strong>3-Session Progression:</strong> Does the module follow the sequence: 1) Foundational interaction, 2) Critical AI Literacy, 3) Authentic Inquiry?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_pedagogy2"> 
+                        <span><strong>Connection:</strong> Does the module trigger the necessary scaffolding metrics (hints vs. answers) or misconception evaluations?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_ethics1"> 
+                        <span><strong>GDPR & Privacy:</strong> Can this module be executed without requiring students to input any personally identifiable information (PII)?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_ethics2"> 
+                        <span><strong>Cross-Border Accessibility:</strong> Are the proposed AI tools and datasets available in all partner countries without geo-blocking?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_ethics3"> 
+                        <span><strong>Bias & Representation:</strong> Have potential socio-cultural biases in the AI outputs been considered and addressed in the literacy discussion?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_tech1"> 
+                        <span><strong>Interaction Data:</strong> Does the module prompt meaningful human-AI interactions that will generate useful timestamped log files for impact evaluation?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_tech2"> 
+                        <span><strong>Iterative Prompting:</strong> Does the module design actually require students to iterate on prompts, rather than just asking a single question?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_tech3_trans"> 
+                        <span><strong>Transferability:</strong> Can the module be adapted and replicated across different educational contexts, institutions, or AI tools without compromising its pedagogical purpose?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_tech3_sust"> 
+                        <span><strong>Sustainability:</strong> Can the module remain relevant as AI technologies and tools evolve?</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ref_tech3_indep"> 
+                        <span><strong>Pedagogical Independence:</strong> Is the pedagogical purpose of the module clearly driving the use of AI, rather than being dependent on a specific tool, platform, or technological feature?</span>
+                    </label>
+                </div>
+                
+                <label style="margin-top: 25px;">ADDITIONAL PLATFORM NEEDS</label>
+                <span class="description">Specify any extra requirements (e.g., specific functionalities like image generation, formula parsing).</span>
                 <textarea name="platformNeeds"></textarea>
             </div>
-            
+
             <div class="form-section">
-                <h3>6. Logistics & Evaluation</h3>
-                <label>RESOURCES / MATERIALS NEEDED</label>
-                <span class="description">List materials, equipment, and consideration for low-bandwidth/offline options.</span>
+                <h3>5. Resources/ Material needs</h3>
+                <label>Describe and list the resources required for this module.>/label>
                 <textarea name="resources"></textarea>
-                
-                <label>EXPECTED RESULTS / EVALUATION</label>
-                <span class="description">Describe how the results will be evaluated (including pre/post-tests and science literacy assessment in Session 3).</span>
-                <textarea name="evaluation"></textarea>
             </div>
 
             <button type="submit" class="submit-btn">Submit Intervention Draft</button>
@@ -391,7 +383,6 @@
     </div>
 </div>
 
-<!-- JavaScript for Tabs functionality -->
 <script>
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -407,7 +398,6 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-// Open the first tab by default when the page loads
 document.getElementById("defaultOpen").click();
 </script>
 
