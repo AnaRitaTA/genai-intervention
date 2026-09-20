@@ -163,7 +163,6 @@
             margin-top: 5px;
         }
         
-        /* Updated Reflection Box Styling for better alignment */
         .reflection-box {
             background-color: #e8f0fe;
             border: 1px solid #cddc39;
@@ -181,7 +180,6 @@
             cursor: pointer;
         }
         .reflection-box input[type="checkbox"] {
-            /* Prevents the checkbox from shrinking and adds spacing */
             flex-shrink: 0; 
             width: 18px;
             height: 18px;
@@ -190,7 +188,6 @@
             cursor: pointer;
         }
         .reflection-box span {
-            /* Ensures the text stays in a block next to the checkbox */
             display: block;
         }
 
@@ -250,7 +247,11 @@
     <div id="Template" class="tabcontent template-form">
         <h2>Intervention Development Form</h2>
         
-        <form id="intervention-form" action="https://script.google.com/macros/s/AKfycbzIcCs_qux-ju59eGzadeEYx784zj-mDm9YWfZDt4ZnLabpPf9o0SRrmMWt0lRiO1m8/exec" method="POST">
+        <!-- TRUQUE DO IFRAME PARA REDIRECIONAMENTO -->
+        <script type="text/javascript">var submitted=false;</script>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { window.location='https://anaritata.github.io/genai-intervention/'; }"></iframe>
+        
+        <form id="intervention-form" action="https://script.google.com/macros/s/AKfycbzIcCs_qux-ju59eGzadeEYx784zj-mDm9YWfZDt4ZnLabpPf9o0SRrmMWt0lRiO1m8/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true; alert('Formulário submetido com sucesso!');">
             
             <div class="form-section">
                 <h3>1. Team responsible for development</h3>
@@ -373,8 +374,8 @@
             </div>
 
             <div class="form-section">
-                <h3>5. Resources/ Material needs</h3>
-                <label>Describe and list the resources required for this module.</label>
+                <h3>5. Logistics</h3>
+                <label>RESOURCES / MATERIALS NEEDED</label>
                 <textarea name="resources"></textarea>
             </div>
 
