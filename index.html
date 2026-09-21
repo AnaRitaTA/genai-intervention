@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intervention Design & Co-Creation Workshop</title>
-    <!-- Importação da biblioteca PptxGenJS -->
+    <!-- Importação da biblioteca PptxGenJS para gerar o PowerPoint -->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs/dist/pptxgen.bundle.js"></script>
     <style>
         body {
@@ -352,7 +352,7 @@ function openTab(evt, tabName) {
 
 document.getElementById("defaultOpen").click();
 
-// Submissão do formulário via AJAX (sem recarregar a página)
+// Submeter dados para o Google Sheets em background (sem recarregar)
 function submitForm(event) {
     event.preventDefault();
     let btn = document.getElementById("submitBtn");
@@ -362,7 +362,6 @@ function submitForm(event) {
     let form = document.getElementById("intervention-form");
     let formData = new FormData(form);
     
-    // URL do teu Google Apps Script Web App
     let scriptURL = "https://script.google.com/macros/s/AKfycbzIcCs_qux-ju59eGzadeEYx784zj-mDm9YWfZDt4ZnLabpPf9o0SRrmMWt0lRiO1m8/exec";
 
     fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
@@ -379,7 +378,7 @@ function submitForm(event) {
         });
 }
 
-// Função para gerar o PowerPoint
+// Gerar e descarregar o PowerPoint com imagens reais no rodapé
 function generatePPT() {
     if (typeof PptxGenJS === 'undefined') {
         alert("The PowerPoint library is still loading or network connection failed. Please try again in a moment.");
@@ -412,20 +411,31 @@ function generatePPT() {
     let platformNeeds = document.getElementById("platformNeeds").value || "";
     let resources = document.getElementById("resources").value || "";
 
-    // Rodapé institucional padrão para os slides
+    // Rodapé institucional com as imagens reais (eu_flag.png e logo2.png)
     function addStandardFooter(slide) {
-        slide.addText("Funded by the European Union", { x: 0.8, y: 5.0, fontSize: 8, color: "003399", bold: true });
-        slide.addText("GeNAI", { x: 8.5, y: 4.9, fontSize: 16, color: "1C3D72", bold: true });
+        // Emblema UE (canto inferior esquerdo)
+        try {
+            slide.addImage({ path: "eu_flag.png", x: 0.8, y: 4.8, w: 1.0, h: 0.6 });
+        } catch(e) {
+            slide.addText("Funded by the European Union", { x: 0.8, y: 5.0, fontSize: 8, color: "003399", bold: true });
+        }
+
+        // Logótipo GeNAI (canto inferior direito)
+        try {
+            slide.addImage({ path: "logo2.png", x: 8.2, y: 4.8, w: 1.2, h: 0.5 });
+        } catch(e) {
+            slide.addText("GeNAI", { x: 8.5, y: 4.9, fontSize: 16, color: "1C3D72", bold: true });
+        }
     }
 
-    // 1. SLIDE DE TÍTULO
+    // Slide 1: Título
     let slide1 = pptx.addSlide();
     slide1.background = { color: "FFFFFF" };
     slide1.addText(moduleNumber, { x: 0.8, y: 1.2, fontSize: 26, color: "1C3D72", bold: true, w: "85%" });
     slide1.addText("Author(s): " + authorName + (leadPartner ? " (" + leadPartner + ")" : ""), { x: 0.8, y: 2.2, fontSize: 13, color: "555555" });
     addStandardFooter(slide1);
 
-    // 2. SLIDE DE OVERVIEW
+    // Slide 2: Overview
     let slide2 = pptx.addSlide();
     slide2.addText("Intervention Overview", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide2.addText([
@@ -436,13 +446,13 @@ function generatePPT() {
     ], { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.5" });
     addStandardFooter(slide2);
 
-    // 3. SLIDE DE DESCRIÇÃO GERAL
+    // Slide 3: Descrição Geral
     let slide3 = pptx.addSlide();
     slide3.addText("General Description & Implementation", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide3.addText(generalDescription, { x: 0.8, y: 1.5, fontSize: 13, color: "333333", w: "85%", h: "3.2" });
     addStandardFooter(slide3);
 
-    // 4. SLIDE DAS SESSÕES 1 E 2
+    // Slide 4: Sessões 1 e 2
     let slide4 = pptx.addSlide();
     slide4.addText("Sessions 1 & 2 Description", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide4.addText([
@@ -453,7 +463,7 @@ function generatePPT() {
     ], { x: 0.8, y: 1.3, w: "85%", h: "3.5" });
     addStandardFooter(slide4);
 
-    // 5. SLIDE DA SESSÃO 3 E LOGÍSTICA
+    // Slide 5: Sessão 3 e Logística
     let slide5 = pptx.addSlide();
     slide5.addText("Session 3, Platform & Logistics", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide5.addText([
