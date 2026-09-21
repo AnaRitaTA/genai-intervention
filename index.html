@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intervention Design & Co-Creation Workshop</title>
-    <!-- Importação da biblioteca PptxGenJS -->
-    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/libs/pptxgen.bundle.js"></script>
+    <!-- Importação corrigida e direta do PptxGenJS -->
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs/dist/pptxgen.bundle.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -334,7 +334,6 @@
             <button type="submit" class="submit-btn">Submit Intervention Draft</button>
         </form>
 
-        <!-- Botão colocado fora do form para evitar conflitos de validação -->
         <button type="button" class="ppt-btn" onclick="generatePPT()">Generate & Download Presentation (.pptx)</button>
     </div>
 </div>
@@ -356,7 +355,6 @@ function openTab(evt, tabName) {
 
 document.getElementById("defaultOpen").click();
 
-// Função para gerar o PowerPoint
 function generatePPT() {
     if (typeof PptxGenJS === 'undefined') {
         alert("A biblioteca do PowerPoint ainda está a carregar ou falhou a ligação à internet. Tente novamente em instantes.");
@@ -386,14 +384,12 @@ function generatePPT() {
     let platformNeeds = document.getElementById("platformNeeds").value || "None provided";
     let resources = document.getElementById("resources").value || "None provided";
 
-    // 1. SLIDE DE TÍTULO
     let slide1 = pptx.addSlide();
     slide1.background = { color: "1C3D72" };
     slide1.addText("Horizon Europe GeNAI", { x: 0.8, y: 1.5, fontSize: 14, color: "6C8A2B", bold: true });
     slide1.addText(moduleNumber, { x: 0.8, y: 2.2, fontSize: 28, color: "FFFFFF", bold: true, w: "85%" });
     slide1.addText("Author(s): " + authorName + " | " + leadPartner, { x: 0.8, y: 4.0, fontSize: 14, color: "DDDDDD" });
 
-    // 2. SLIDE DE DETALHES GERAIS
     let slide2 = pptx.addSlide();
     slide2.addText("Intervention Overview", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide2.addText([
@@ -403,12 +399,10 @@ function generatePPT() {
         { text: "Learning Goals:\n", options: { bold: true } }, { text: learningGoals }
     ], { x: 0.8, y: 1.4, fontSize: 12, color: "333333", w: "85%", h: "80%" });
 
-    // 3. SLIDE DE DESCRIÇÃO GERAL
     let slide3 = pptx.addSlide();
     slide3.addText("General Description & Implementation", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide3.addText(generalDescription, { x: 0.8, y: 1.5, fontSize: 14, color: "333333", w: "85%", h: "70%" });
 
-    // 4. SLIDE DA SESSÃO 1 & 2
     let slide4 = pptx.addSlide();
     slide4.addText("Sessions 1 & 2 Description", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide4.addText([
@@ -418,7 +412,6 @@ function generatePPT() {
         { text: session2, options: { fontSize: 11 } }
     ], { x: 0.8, y: 1.4, fontSize: 12, color: "333333", w: "85%", h: "80%" });
 
-    // 5. SLIDE DA SESSÃO 3 & LOGÍSTICA
     let slide5 = pptx.addSlide();
     slide5.addText("Session 3, Platform & Logistics", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
     slide5.addText([
@@ -428,7 +421,6 @@ function generatePPT() {
         { text: "Resources Needed: ", options: { bold: true } }, { text: resources, options: { fontSize: 10 } }
     ], { x: 0.8, y: 1.4, fontSize: 11, color: "333333", w: "85%", h: "80%" });
 
-    // Gerar o ficheiro PPTX
     let fileName = moduleNumber.replace(/[^a-z0-9]/gi, '_').toLowerCase() + "_presentation.pptx";
     pptx.writeFile({ fileName: fileName });
 }
