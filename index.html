@@ -378,7 +378,7 @@ function submitForm(event) {
         });
 }
 
-// Gerar e descarregar o PowerPoint com o design exato do template enviado
+// Gerar e descarregar o PowerPoint com o design ajustado
 function generatePPT() {
     if (typeof PptxGenJS === 'undefined') {
         alert("The PowerPoint library is still loading or network connection failed. Please try again in a moment.");
@@ -411,42 +411,43 @@ function generatePPT() {
     let platformNeeds = document.getElementById("platformNeeds").value || "";
     let resources = document.getElementById("resources").value || "";
 
-    // Rodapé institucional com o traço verde superior e logótipos proporcionalmente ajustados
+    // Rodapé institucional com o traço verde superior e logo da UE mais largo
     function addStandardFooter(slide) {
         // Linha/traço verde separador do rodapé
         slide.addShape(pptx.ShapeType.line, { x: 0.8, y: 4.7, w: 8.4, h: 0, line: { color: "6C8A2B", width: 2 } });
 
-        // Emblema UE (com largura maior para não encolher)
+        // Emblema UE (com largura aumentada para w: 1.8 para não ficar encolhido)
         try {
-            slide.addImage({ path: "eu_flag.png", x: 0.8, y: 4.85, w: 1.4, h: 0.55 });
+            slide.addImage({ path: "eu_flag.png", x: 0.8, y: 4.83, w: 1.8, h: 0.58 });
         } catch(e) {
             slide.addText("Funded by the European Union", { x: 0.8, y: 4.95, fontSize: 8, color: "003399", bold: true });
         }
 
         // Logótipo GeNAI (canto inferior direito)
         try {
-            slide.addImage({ path: "logo2.png", x: 8.0, y: 4.85, w: 1.2, h: 0.55 });
+            slide.addImage({ path: "logo2.png", x: 7.8, y: 4.83, w: 1.4, h: 0.58 });
         } catch(e) {
-            slide.addText("GeNAI", { x: 8.4, y: 4.9, fontSize: 16, color: "1C3D72", bold: true });
+            slide.addText("GeNAI", { x: 8.2, y: 4.9, fontSize: 16, color: "1C3D72", bold: true });
         }
     }
 
-    // 1. SLIDE DE TÍTULO (Com o design idêntico à imagem enviada: fundo branco, GeNAI em destaque, linha azul, e título centrado)
+    // 1. SLIDE DE TÍTULO (Com a linha azul afastada dos textos, alinhada à imagem enviada)
     let slide1 = pptx.addSlide();
     slide1.background = { color: "FFFFFF" };
 
-    // Título principal "GeNAI" no topo (ou imagem do logótipo se preferires, aqui simulado com texto estilizado ou imagem)
+    // Logótipo GeNAI no topo
     try {
-        slide1.addImage({ path: "logo2.png", x: 2.5, y: 0.8, w: 5.0, h: 1.5 });
+        slide1.addImage({ path: "logo2.png", x: 2.2, y: 0.6, w: 5.6, h: 1.8 });
     } catch(e) {
-        slide1.addText("GeNAI", { x: 3.5, y: 1.0, fontSize: 44, color: "1C3D72", bold: true });
+        slide1.addText("GeNAI", { x: 3.5, y: 0.8, fontSize: 44, color: "1C3D72", bold: true });
     }
 
-    // Linha azul horizontal divisória (exatamente como na imagem)
-    slide1.addShape(pptx.ShapeType.line, { x: 0.8, y: 2.7, w: 8.4, h: 0, line: { color: "1C3D72", width: 2.5 } });
+    // Linha azul horizontal divisória posicionada mais abaixo para não tocar no logotipo
+    slide1.addShape(pptx.ShapeType.line, { x: 0.8, y: 2.5, w: 8.4, h: 0, line: { color: "1C3D72", width: 2.5 } });
 
-    // Subtítulo e Título do Módulo centrados abaixo da linha
-    slide1.addText("Intervention Design & Co-Creation\n" + moduleNumber, { x: 1.0, y: 2.9, fontSize: 18, color: "6C8A2B", bold: true, align: "center", w: "80%" });
+    // Subtítulo e Título do Módulo posicionados abaixo da linha (sem sobreposição)
+    slide1.addText("Intervention Design & Co-Creation", { x: 1.0, y: 2.8, fontSize: 16, color: "6C8A2B", bold: true, italic: true, align: "center", w: "80%" });
+    slide1.addText(moduleNumber, { x: 1.0, y: 3.2, fontSize: 18, color: "6C8A2B", bold: true, align: "center", w: "80%" });
     slide1.addText("Author(s): " + authorName + (leadPartner ? " | " + leadPartner : ""), { x: 1.0, y: 4.0, fontSize: 12, color: "555555", align: "center", w: "80%" });
     
     addStandardFooter(slide1);
