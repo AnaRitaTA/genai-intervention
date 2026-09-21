@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intervention Design & Co-Creation Workshop</title>
+    <!-- Importação da biblioteca PptxGenJS -->
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/libs/pptxgen.bundle.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -162,34 +164,6 @@
             margin-right: 20px;
             margin-top: 5px;
         }
-        
-        .reflection-box {
-            background-color: #e8f0fe;
-            border: 1px solid #cddc39;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-        .reflection-box label {
-            display: flex;
-            align-items: flex-start;
-            font-weight: normal;
-            margin-top: 12px;
-            color: #202124;
-            line-height: 1.5;
-            cursor: pointer;
-        }
-        .reflection-box input[type="checkbox"] {
-            flex-shrink: 0; 
-            width: 18px;
-            height: 18px;
-            margin-right: 12px;
-            margin-top: 2px;
-            cursor: pointer;
-        }
-        .reflection-box span {
-            display: block;
-        }
 
         .submit-btn {
             background-color: #1c3d72;
@@ -205,6 +179,22 @@
         }
         .submit-btn:hover {
             background-color: #122b50;
+        }
+
+        .ppt-btn {
+            background-color: #6c8a2b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .ppt-btn:hover {
+            background-color: #556c21;
         }
     </style>
 </head>
@@ -229,14 +219,22 @@
 
     <!-- TAB 1: OVERVIEW -->
     <div id="Overview" class="tabcontent wp6-intro">
-        <h2>Three-Arm Cluster-Randomised Design</h2>
+        <h2>Four-Arm Cluster-Randomised Design</h2>
         <ul>
-            <li><strong>GROUP A:</strong> AI use in class with instructional support (AI + instruction)</li>
-            <li><strong>GROUP B:</strong> AI use in class without instructional support (AI, no instruction)</li>
-            <li><strong>GROUP C (BASELINE CONTROL):</strong> No AI use in class (baseline) (No AI Integration)</li>
+            <li><strong>GROUP A:</strong> Structured AI use with AI literacy training (AI + instruction)</li>
+            <li><strong>GROUP B:</strong> Unstructured AI use (AI, no instruction)</li>
+            <li><strong>GROUP C:</strong> Materials without AI (Control / Active control)</li>
+            <li><strong>GROUP D:</strong> Waitlist control</li>
+        </ul>
+        <p><em>Key Contrasts:</em> D vs C, C vs B, B vs A.</p>
+
+        <h2>Implementation & Methodology</h2>
+        <ul>
+            <li><strong>Teacher-Led Delivery:</strong> Fully prepared materials, onboarding, fidelity monitoring, and tracking of teacher variables.</li>
+            <li><strong>Cluster Randomisation:</strong> Randomisation at the class level across 40 classes per country in eight countries (~1,000 students per country). One subject track per student.</li>
         </ul>
 
-        <h2>The 3-Sessions Intervention</h2>
+        <h2>The 3-Sessions Intervention (~3 hours each)</h2>
         <ul>
             <li><strong>1. Foundational AI Interaction:</strong> Students practice prompt formulation, engage with AI explanations, and solve curriculum-aligned tasks. Aim: to establish AI as a learning tool and build prompt engineering competence.</li>
             <li><strong>2. Critical AI Literacy:</strong> Students work with flawed AI outputs, evaluate the reliability of claims using STEM knowledge, and learn to apply verification strategies. Aim: foster critical AI use and epistemic Awareness.</li>
@@ -248,7 +246,6 @@
     <div id="Template" class="tabcontent template-form">
         <h2>Intervention Development Form</h2>
         
-        <!-- TRUQUE DO IFRAME PARA REDIRECIONAMENTO -->
         <script type="text/javascript">var submitted=false;</script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { window.location='https://anaritata.github.io/genai-intervention/'; }"></iframe>
         
@@ -258,28 +255,32 @@
                 <h3>1. Team responsible for development</h3>
                 
                 <label>WORKING GROUP / LEAD PARTNER</label>
-                <select name="leadPartner" required>
+                <select name="leadPartner" id="leadPartner" required>
                     <option value="" disabled selected>Select the working group...</option>
-                    <option value="Group 1">Group 1 · Mathematics - Leader: Utrecht University (UU)</option>
-                    <option value="Group 2">Group 2 · Science - Leader: Univ. of Jaén (UJA)</option>
-                    <option value="Group 3">Group 3 · Technology and Engineering - Leader: Hacettepe Univ. (HU)</option>
+                    <option value="Group 1 · Mathematics">Group 1 · Mathematics</option>
+                    <option value="Group 2 · Physics">Group 2 · Physics</option>
+                    <option value="Group 3 · Integrated STEM">Group 3 · Integrated STEM</option>
                 </select>
 
+                <label>AUTHOR(S) / RESEARCHER NAME(S)</label>
+                <input type="text" name="authorName" id="authorName" placeholder="e.g. Ana Rita / John Doe" required>
+
                 <label>MODULE DESIGNATION & TOPIC</label>
-                <input type="text" name="moduleNumber" placeholder="e.g. Module 1: Ecosystems & Energy Flows">
+                <input type="text" name="moduleNumber" id="moduleNumber" placeholder="e.g. Module 1: Ecosystems & Energy Flows">
 
                 <label>AGE GROUP</label>
-                <select name="ageGroup">
+                <select name="ageGroup" id="ageGroup">
                     <option value="" disabled selected>Select age cohort...</option>
                     <option value="12-13">12–13 Years Old</option>
                     <option value="16-17">16–17 Years Old</option>
                 </select>
 
-                <label>THREE-ARM CLUSTER-RANDOMISED DESIGN</label>
+                <label>FOUR-ARM CLUSTER-RANDOMISED DESIGN</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="armCondition" value="Group A"> GROUP A - AI use in class with instructional support</label><br>
-                    <label><input type="radio" name="armCondition" value="Group B"> GROUP B - AI use in class without instructional support</label><br>
-                    <label><input type="radio" name="armCondition" value="Group C"> GROUP C (BASELINE CONTROL) - No AI use in class (baseline)</label>
+                    <label><input type="radio" name="armCondition" value="Group A"> GROUP A - Structured AI use with AI literacy training</label><br>
+                    <label><input type="radio" name="armCondition" value="Group B"> GROUP B - Unstructured AI use</label><br>
+                    <label><input type="radio" name="armCondition" value="Group C"> GROUP C - Materials without AI</label><br>
+                    <label><input type="radio" name="armCondition" value="Group D"> GROUP D - Waitlist</label>
                 </div>
             </div>
 
@@ -288,15 +289,15 @@
                 
                 <label>LEARNING GOALS</label>
                 <span class="description">List the learning goals (what is intended to be achieved/learned).</span>
-                <textarea name="learningGoals"></textarea>
+                <textarea name="learningGoals" id="learningGoals"></textarea>
 
                 <label>CONTEXT</label>
                 <span class="description">Describe the real-world scenario or problem this module is anchored in (e.g., climate, energy).</span>
-                <textarea name="context"></textarea>
+                <textarea name="context" id="context"></textarea>
                 
                 <label>GENERAL DESCRIPTION OF THE INTERVENTION</label>
-                <span class="description">Provide a brief overall description of the intervention (tasks) before detailing the three sessions below.</span>
-                <textarea name="generalDescription"></textarea>
+                <span class="description">Provide a brief overall description of the intervention (tasks) and teacher-led implementation details before detailing the three sessions below.</span>
+                <textarea name="generalDescription" id="generalDescription"></textarea>
             </div>
 
             <div class="form-section">
@@ -305,83 +306,36 @@
                 
                 <label>1. FOUNDATIONAL AI INTERACTION</label>
                 <span class="description">Students practice prompt formulation, engage with AI explanations, and solve curriculum-aligned tasks. Aim: to establish AI as a learning tool and build prompt engineering competence.</span>
-                <textarea name="session1"></textarea>
+                <textarea name="session1" id="session1"></textarea>
 
                 <label>2. CRITICAL AI LITERACY</label>
                 <span class="description">Students work with flawed AI outputs, evaluate the reliability of claims using STEM knowledge, and learn to apply verification strategies. Aim: foster critical AI use and epistemic Awareness.</span>
-                <textarea name="session2"></textarea>
+                <textarea name="session2" id="session2"></textarea>
 
                 <label>3. AUTHENTIC INQUIRY</label>
                 <span class="description">Students tackle real-world STEM problems (e.g., plastic consumption), synthesising AI-generated and external information to construct arguments under uncertainty. Aim: To develop interdisciplinary reasoning and scientific literacy.</span>
-                <textarea name="session3"></textarea>
+                <textarea name="session3" id="session3"></textarea>
             </div>
 
             <div class="form-section">
-                <h3>4. Tool Integration & Feasibility</h3>
+                <h3>4. Platform Needs</h3>
                 
-                <label>SUGGESTED AI TOOLS</label>
-                <span class="description">List the AI tools, models, or platforms recommended for this module (e.g., ChatGPT, Claude, custom GPTs).</span>
-                <input type="text" name="suggestedAITools" placeholder="e.g. ChatGPT (GPT-4), Claude 3, etc.">
-
-                <label style="margin-top: 25px;">DESIGN REFLECTION & FEASIBILITY CHECKLIST</label>
-                <span class="description">Reflect on the extent to which the proposed intervention aligns with relevant pedagogical, ethical, and technical considerations.</span>
-                
-                <div class="reflection-box">
-                    <label>
-                        <input type="checkbox" name="ref_pedagogy1"> 
-                        <span><strong>3-Session Progression:</strong> Does the module follow the sequence: 1) Foundational interaction, 2) Critical AI Literacy, 3) Authentic Inquiry?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_pedagogy2"> 
-                        <span><strong>Connection:</strong> Does the module trigger the necessary scaffolding metrics (hints vs. answers) or misconception evaluations?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_ethics1"> 
-                        <span><strong>GDPR & Privacy:</strong> Can this module be executed without requiring students to input any personally identifiable information (PII)?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_ethics2"> 
-                        <span><strong>Cross-Border Accessibility:</strong> Are the proposed AI tools and datasets available in all partner countries without geo-blocking?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_ethics3"> 
-                        <span><strong>Bias & Representation:</strong> Have potential socio-cultural biases in the AI outputs been considered and addressed in the literacy discussion?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_tech1"> 
-                        <span><strong>Interaction Data:</strong> Does the module prompt meaningful human-AI interactions that will generate useful timestamped log files for impact evaluation?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_tech2"> 
-                        <span><strong>Iterative Prompting:</strong> Does the module design actually require students to iterate on prompts, rather than just asking a single question?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_tech3_trans"> 
-                        <span><strong>Transferability:</strong> Can the module be adapted and replicated across different educational contexts, institutions, or AI tools without compromising its pedagogical purpose?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_tech3_sust"> 
-                        <span><strong>Sustainability:</strong> Can the module remain relevant as AI technologies and tools evolve?</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="ref_tech3_indep"> 
-                        <span><strong>Pedagogical Independence:</strong> Is the pedagogical purpose of the module clearly driving the use of AI, rather than being dependent on a specific tool, platform, or technological feature?</span>
-                    </label>
-                </div>
-                
-                <label style="margin-top: 25px;">ADDITIONAL PLATFORM NEEDS</label>
+                <label>ADDITIONAL PLATFORM NEEDS</label>
                 <span class="description">Specify any extra requirements (e.g., specific functionalities like image generation, formula parsing).</span>
-                <textarea name="platformNeeds"></textarea>
+                <textarea name="platformNeeds" id="platformNeeds"></textarea>
             </div>
 
             <div class="form-section">
                 <h3>5. Logistics</h3>
                 <label>RESOURCES / MATERIALS NEEDED</label>
-                <textarea name="resources"></textarea>
+                <textarea name="resources" id="resources"></textarea>
             </div>
 
             <button type="submit" class="submit-btn">Submit Intervention Draft</button>
         </form>
+
+        <!-- Botão colocado fora do form para evitar conflitos de validação -->
+        <button type="button" class="ppt-btn" onclick="generatePPT()">Generate & Download Presentation (.pptx)</button>
     </div>
 </div>
 
@@ -401,6 +355,83 @@ function openTab(evt, tabName) {
 }
 
 document.getElementById("defaultOpen").click();
+
+// Função para gerar o PowerPoint
+function generatePPT() {
+    if (typeof PptxGenJS === 'undefined') {
+        alert("A biblioteca do PowerPoint ainda está a carregar ou falhou a ligação à internet. Tente novamente em instantes.");
+        return;
+    }
+
+    let pptx = new PptxGenJS();
+
+    let leadPartner = document.getElementById("leadPartner").value || "Not specified";
+    let authorName = document.getElementById("authorName").value || "Not specified";
+    let moduleNumber = document.getElementById("moduleNumber").value || "Untitled Module";
+    let ageGroup = document.getElementById("ageGroup").value || "Not specified";
+    
+    let selectedArm = "";
+    let armRadios = document.getElementsByName("armCondition");
+    for(let r of armRadios) {
+        if(r.checked) { selectedArm = r.value; break; }
+    }
+    selectedArm = selectedArm || "Not specified";
+
+    let learningGoals = document.getElementById("learningGoals").value || "None provided";
+    let context = document.getElementById("context").value || "None provided";
+    let generalDescription = document.getElementById("generalDescription").value || "None provided";
+    let session1 = document.getElementById("session1").value || "None provided";
+    let session2 = document.getElementById("session2").value || "None provided";
+    let session3 = document.getElementById("session3").value || "None provided";
+    let platformNeeds = document.getElementById("platformNeeds").value || "None provided";
+    let resources = document.getElementById("resources").value || "None provided";
+
+    // 1. SLIDE DE TÍTULO
+    let slide1 = pptx.addSlide();
+    slide1.background = { color: "1C3D72" };
+    slide1.addText("Horizon Europe GeNAI", { x: 0.8, y: 1.5, fontSize: 14, color: "6C8A2B", bold: true });
+    slide1.addText(moduleNumber, { x: 0.8, y: 2.2, fontSize: 28, color: "FFFFFF", bold: true, w: "85%" });
+    slide1.addText("Author(s): " + authorName + " | " + leadPartner, { x: 0.8, y: 4.0, fontSize: 14, color: "DDDDDD" });
+
+    // 2. SLIDE DE DETALHES GERAIS
+    let slide2 = pptx.addSlide();
+    slide2.addText("Intervention Overview", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
+    slide2.addText([
+        { text: "Age Group: ", options: { bold: true } }, { text: ageGroup + "\n", options: { bold: false } },
+        { text: "Experimental Arm: ", options: { bold: true } }, { text: selectedArm + "\n\n", options: { bold: false } },
+        { text: "Context / Scenario:\n", options: { bold: true } }, { text: context + "\n\n", options: { bold: false } },
+        { text: "Learning Goals:\n", options: { bold: true } }, { text: learningGoals }
+    ], { x: 0.8, y: 1.4, fontSize: 12, color: "333333", w: "85%", h: "80%" });
+
+    // 3. SLIDE DE DESCRIÇÃO GERAL
+    let slide3 = pptx.addSlide();
+    slide3.addText("General Description & Implementation", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
+    slide3.addText(generalDescription, { x: 0.8, y: 1.5, fontSize: 14, color: "333333", w: "85%", h: "70%" });
+
+    // 4. SLIDE DA SESSÃO 1 & 2
+    let slide4 = pptx.addSlide();
+    slide4.addText("Sessions 1 & 2 Description", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
+    slide4.addText([
+        { text: "1. Foundational AI Interaction:\n", options: { bold: true, color: "1C3D72" } },
+        { text: session1 + "\n\n", options: { fontSize: 11 } },
+        { text: "2. Critical AI Literacy:\n", options: { bold: true, color: "1C3D72" } },
+        { text: session2, options: { fontSize: 11 } }
+    ], { x: 0.8, y: 1.4, fontSize: 12, color: "333333", w: "85%", h: "80%" });
+
+    // 5. SLIDE DA SESSÃO 3 & LOGÍSTICA
+    let slide5 = pptx.addSlide();
+    slide5.addText("Session 3, Platform & Logistics", { x: 0.8, y: 0.6, fontSize: 22, color: "1C3D72", bold: true });
+    slide5.addText([
+        { text: "3. Authentic Inquiry:\n", options: { bold: true, color: "1C3D72" } },
+        { text: session3 + "\n\n", options: { fontSize: 10 } },
+        { text: "Platform Needs: ", options: { bold: true } }, { text: platformNeeds + "\n", options: { fontSize: 10 } },
+        { text: "Resources Needed: ", options: { bold: true } }, { text: resources, options: { fontSize: 10 } }
+    ], { x: 0.8, y: 1.4, fontSize: 11, color: "333333", w: "85%", h: "80%" });
+
+    // Gerar o ficheiro PPTX
+    let fileName = moduleNumber.replace(/[^a-z0-9]/gi, '_').toLowerCase() + "_presentation.pptx";
+    pptx.writeFile({ fileName: fileName });
+}
 </script>
 
 </body>
