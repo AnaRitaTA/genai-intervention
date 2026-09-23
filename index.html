@@ -238,7 +238,7 @@
                 </select>
 
                 <label>WORKING GROUP</label>
-                <input type="text" name="authorName" id="authorName" placeholder="e.g. John Doe" required>
+                <input type="text" name="authorName" id="authorName" placeholder="e.g. John Do" required>
 
                 <label>TOPIC</label>
                 <input type="text" name="moduleNumber" id="moduleNumber" placeholder="e.g. Energy">
@@ -404,7 +404,7 @@ function generatePPT() {
 
     slide1.addShape(pptx.ShapeType.line, { x: 0.8, y: 2.5, w: 8.4, h: 0, line: { color: "1C3D72", width: 2.5 } });
 
-    slide1.addText("Intervention Design & Co-Creation", { x: 1.0, y: 2.8, fontSize: 16, color: "6C8A2B", bold: true, italic: true, align: "center", w: "80%" });
+    slide1.addText("The Intervention Brainstorming", { x: 1.0, y: 2.8, fontSize: 16, color: "6C8A2B", bold: true, italic: true, align: "center", w: "80%" });
     slide1.addText("Topic: " + moduleNumber, { x: 1.0, y: 3.2, fontSize: 18, color: "6C8A2B", bold: true, align: "center", w: "80%" });
     slide1.addText("Working Group: " + authorName + (leadPartner ? " | " + leadPartner : ""), { x: 1.0, y: 4.0, fontSize: 12, color: "555555", align: "center", w: "80%" });
     
