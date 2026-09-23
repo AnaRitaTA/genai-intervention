@@ -339,7 +339,7 @@ function submitForm(event) {
         });
 }
 
-// Gerar e descarregar o PowerPoint com o design ajustado
+// Gerar e descarregar o PowerPoint com o design ajustado (fundo branco + rodape.png)
 function generatePPT() {
     if (typeof PptxGenJS === 'undefined') {
         alert("The PowerPoint library is still loading or network connection failed. Please try again in a moment.");
@@ -365,7 +365,7 @@ function generatePPT() {
     let platformNeeds = document.getElementById("platformNeeds").value || "";
     let resources = document.getElementById("resources").value || "";
 
-    // Rodapé institucional com o traço verde superior, logo UE, espaço para imagem extra e logo GeNAI
+    // Rodapé institucional com o traço verde superior, logo UE, imagem 'rodape.png' e logo GeNAI
     function addStandardFooter(slide) {
         // Linha/traço verde separador do rodapé
         slide.addShape(pptx.ShapeType.line, { x: 0.8, y: 4.7, w: 8.4, h: 0, line: { color: "6C8A2B", width: 2 } });
@@ -377,11 +377,11 @@ function generatePPT() {
             slide.addText("Funded by the European Union", { x: 0.8, y: 4.95, fontSize: 8, color: "003399", bold: true });
         }
 
-        // 2. Espaço reservado para imagem extra no rodapé (substitui "caminho_da_tua_imagem.png" pelo teu ficheiro)
+        // 2. Imagem 'rodape.png' na zona central do rodapé
         try {
-            slide.addImage({ path: "caminho_da_tua_imagem.png", x: 3.5, y: 4.83, w: 1.4, h: 0.55 });
+            slide.addImage({ path: "rodape.png", x: 3.5, y: 4.83, w: 1.4, h: 0.55 });
         } catch(e) {
-            slide.addText("rodape.png", { x: 3.5, y: 4.95, fontSize: 8, color: "888888", italic: true });
+            slide.addText("[ rodape.png ]", { x: 3.5, y: 4.95, fontSize: 8, color: "888888", italic: true });
         }
 
         // 3. Logótipo GeNAI (canto inferior direito)
@@ -392,88 +392,66 @@ function generatePPT() {
         }
     }
 
-    // Função para aplicar o template base nos slides de conteúdo (Fundo azul escuro + caixa cinzenta + rodapé completo)
-    function applyTemplate(slide) {
-        slide.background = { color: "1C3D72" };
-        slide.addShape(pptx.ShapeType.roundRect, { x: 0.6, y: 0.5, width: 8.8, height: 4.6, fill: { color: "E2E7ED" }, line: { color: "CCCCCC", width: 1 } });
+    // 1. SLIDE DE TÍTULO (Capa em fundo branco)
+    let slide1 = pptx.addSlide();
+    slide1.background = { color: "FFFFFF" };
 
-        try {
-            slide.addImage({ path: "logo2.png", x: 0.9, y: 0.7, w: 1.8, h: 0.9 });
-        } catch(e) {
-            slide.addText("GeNAI", { x: 0.9, y: 0.8, fontSize: 16, color: "1C3D72", bold: true });
-        }
-
-        try {
-            slide.addImage({ path: "eu_flag.png", x: 0.8, y: 4.4, w: 1.3, h: 0.45 });
-        } catch(e) {
-            slide.addText("Funded by the European Union", { x: 0.8, y: 4.45, fontSize: 7, color: "003399", bold: true });
-        }
-
-        slide.addText("The GenAI project has received funding from the European Union’s Horizon Europe framework\nprogram for research and innovation under Grant Agreement No. 101263421.", {
-            x: 2.2, y: 4.35, fontSize: 6.5, color: "333333"
-        });
-        slide.addText("Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union or the\nEuropean Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.", {
-            x: 0.8, y: 4.75, fontSize: 5.5, color: "555555", italic: true
-        });
+    try {
+        slide1.addImage({ path: "logo2.png", x: 2.2, y: 0.6, w: 5.6, h: 1.8 });
+    } catch(e) {
+        slide1.addText("GeNAI", { x: 3.5, y: 0.8, fontSize: 44, color: "1C3D72", bold: true });
     }
 
-    // 1. SLIDE DE TÍTULO (Capa em azul escuro com caixa cinzenta)
-    let slide1 = pptx.addSlide();
-    slide1.background = { color: "1C3D72" };
-    slide1.addShape(pptx.ShapeType.roundRect, { x: 0.6, y: 0.5, width: 8.8, height: 4.6, fill: { color: "E2E7ED" }, line: { color: "CCCCCC", width: 1 } });
+    slide1.addShape(pptx.ShapeType.line, { x: 0.8, y: 2.5, w: 8.4, h: 0, line: { color: "1C3D72", width: 2.5 } });
 
-    try {
-        slide1.addImage({ path: "logo2.png", x: 1.0, y: 0.8, w: 2.2, h: 1.1 });
-    } catch(e) {}
+    slide1.addText("Intervention Design & Co-Creation", { x: 1.0, y: 2.8, fontSize: 16, color: "6C8A2B", bold: true, italic: true, align: "center", w: "80%" });
+    slide1.addText("Topic: " + moduleNumber, { x: 1.0, y: 3.2, fontSize: 18, color: "6C8A2B", bold: true, align: "center", w: "80%" });
+    slide1.addText("Working Group: " + authorName + (leadPartner ? " | " + leadPartner : ""), { x: 1.0, y: 4.0, fontSize: 12, color: "555555", align: "center", w: "80%" });
+    
+    addStandardFooter(slide1);
 
-    slide1.addText("Intervention Design & Co-Creation", { x: 1.5, y: 1.8, fontSize: 24, color: "1C3D72", bold: true, align: "center", w: "7.0" });
-    slide1.addText("Topic: " + moduleNumber, { x: 1.5, y: 2.5, fontSize: 20, color: "1C3D72", bold: true, align: "center", w: "7.0" });
-    slide1.addText("Working Group: " + authorName + (leadPartner ? " | " + leadPartner : ""), { x: 1.5, y: 3.4, fontSize: 11, color: "555555", align: "center", w: "7.0" });
-
-    // Rodapé da Capa
-    try {
-        slide1.addImage({ path: "eu_flag.png", x: 0.8, y: 4.4, w: 1.3, h: 0.45 });
-    } catch(e) {}
-    slide1.addText("The GenAI project has received funding from the European Union’s Horizon Europe framework\nprogram for research and innovation under Grant Agreement No. 101263421.", { x: 2.2, y: 4.35, fontSize: 6.5, color: "333333" });
-    slide1.addText("Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union or the\nEuropean Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.", { x: 0.8, y: 4.75, fontSize: 5.5, color: "555555", italic: true });
-
-    // 2. SLIDE DE TOPIC & CURRICULUM INTEGRATION
+    // 2. SLIDE DE TOPIC & CURRICULUM INTEGRATION (Fundo branco)
     let slide2 = pptx.addSlide();
-    applyTemplate(slide2);
-    slide2.addText("Topic & Curriculum Integration", { x: 1.0, y: 0.8, fontSize: 18, color: "1C3D72", bold: true });
-    slide2.addText(topicIntegration, { x: 1.0, y: 1.4, fontSize: 10, color: "333333", w: "8.0", h: "2.8" });
+    slide2.background = { color: "FFFFFF" };
+    slide2.addText("Topic & Curriculum Integration", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
+    slide2.addText(topicIntegration, { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.1" });
+    addStandardFooter(slide2);
 
-    // 3. SLIDE DE LEARNING GOALS & CONTEXT
+    // 3. SLIDE DE LEARNING GOALS & GENERAL DESCRIPTION (Fundo branco)
     let slide3 = pptx.addSlide();
-    applyTemplate(slide3);
-    slide3.addText("Learning Goals & Context", { x: 1.0, y: 0.8, fontSize: 18, color: "1C3D72", bold: true });
+    slide3.background = { color: "FFFFFF" };
+    slide3.addText("Learning Goals & General Description", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
     slide3.addText([
         { text: "Learning Goals:\n", options: { bold: true } }, { text: learningGoals + "\n\n", options: { bold: false } },
         { text: "General Description:\n", options: { bold: true } }, { text: generalDescription }
-    ], { x: 1.0, y: 1.4, fontSize: 10, color: "333333", w: "8.0", h: "2.8" });
+    ], { x: 0.8, y: 1.2, fontSize: 11, color: "333333", w: "85%", h: "3.3" });
+    addStandardFooter(slide3);
 
-    // 4. SLIDE DA SESSÃO 1 (Foundational AI Interaction)
+    // 4. SLIDE DA SESSÃO 1 (Fundo branco)
     let slide4 = pptx.addSlide();
-    applyTemplate(slide4);
-    slide4.addText("Session 1: Foundational AI Interaction", { x: 1.0, y: 0.8, fontSize: 18, color: "1C3D72", bold: true });
-    slide4.addText(session1, { x: 1.0, y: 1.4, fontSize: 10, color: "333333", w: "8.0", h: "2.8" });
+    slide4.background = { color: "FFFFFF" };
+    slide4.addText("Session 1: Foundational AI Interaction", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
+    slide4.addText(session1, { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.1" });
+    addStandardFooter(slide4);
 
-    // 5. SLIDE DA SESSÃO 2 (Critical AI Literacy)
+    // 5. SLIDE DA SESSÃO 2 (Fundo branco)
     let slide5 = pptx.addSlide();
-    applyTemplate(slide5);
-    slide5.addText("Session 2: Critical AI Literacy", { x: 1.0, y: 0.8, fontSize: 18, color: "1C3D72", bold: true });
-    slide5.addText(session2, { x: 1.0, y: 1.4, fontSize: 10, color: "333333", w: "8.0", h: "2.8" });
+    slide5.background = { color: "FFFFFF" };
+    slide5.addText("Session 2: Critical AI Literacy", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
+    slide5.addText(session2, { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.1" });
+    addStandardFooter(slide5);
 
-    // 6. SLIDE DA SESSÃO 3 E LOGÍSTICA
+    // 6. SLIDE DA SESSÃO 3 E LOGÍSTICA (Fundo branco)
     let slide6 = pptx.addSlide();
-    applyTemplate(slide6);
-    slide6.addText("Session 3, Platform & Logistics", { x: 1.0, y: 0.8, fontSize: 18, color: "1C3D72", bold: true });
+    slide6.background = { color: "FFFFFF" };
+    slide6.addText("Session 3, Platform & Logistics", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
     slide6.addText([
         { text: "3. Authentic Inquiry:\n", options: { bold: true, color: "6C8A2B" } },
-        { text: session3 + "\n\n", options: { fontSize: 9, color: "333333" } },
-        { text: "Platform Needs: ", options: { bold: true } }, { text: platformNeeds + "\n", options: { fontSize: 9 } },
-        { text: "Resources Needed: ", options: { bold: true } }, { text: resources, options: { fontSize: 9 } }
-    ], { x: 1.0, y: 1.4, w: "8.0", h: "2.8" });
+        { text: session3 + "\n\n", options: { fontSize: 10, color: "333333" } },
+        { text: "Platform Needs: ", options: { bold: true } }, { text: platformNeeds + "\n", options: { fontSize: 10 } },
+        { text: "Resources Needed: ", options: { bold: true } }, { text: resources, options: { fontSize: 10 } }
+    ], { x: 0.8, y: 1.2, w: "85%", h: "3.3" });
+    addStandardFooter(slide6);
 
     let fileName = moduleNumber.replace(/[^a-z0-9]/gi, '_').toLowerCase() + "_presentation.pptx";
     pptx.writeFile({ fileName: fileName });
