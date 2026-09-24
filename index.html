@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intervention Brainstorming</title>
+    <title>Intervention Brainstorming & Feedback</title>
     <!-- Importação da biblioteca PptxGenJS para gerar o PowerPoint -->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs/dist/pptxgen.bundle.js"></script>
     <style>
@@ -15,7 +15,7 @@
             background-color: #f9f9f9;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 40px auto;
             background: #fff;
             padding: 40px;
@@ -47,11 +47,6 @@
             font-size: 2em;
             margin: 10px 0;
         }
-        .italic-desc {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 20px;
-        }
         .partners {
             font-size: 0.9em;
             color: #555;
@@ -70,9 +65,9 @@
             border: none;
             outline: none;
             cursor: pointer;
-            padding: 14px 24px;
+            padding: 14px 20px;
             transition: 0.3s;
-            font-size: 1.1em;
+            font-size: 1.05em;
             font-weight: bold;
             color: #555;
             flex: 1;
@@ -106,13 +101,46 @@
         .wp6-intro h2:first-child {
             margin-top: 0;
         }
-        .wp6-intro h3 {
-            color: #6c8a2b;
-            margin-top: 20px;
-        }
         .wp6-intro ul {
             line-height: 1.6;
             margin-bottom: 20px;
+        }
+
+        /* Feedback Cards Grid */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        .feedback-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .feedback-card:hover {
+            transform: translateY(-3px);
+        }
+        .feedback-card h3 {
+            color: #1c3d72;
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 2px solid #6c8a2b;
+            padding-bottom: 8px;
+        }
+        .feedback-card h4 {
+            color: #333;
+            font-size: 1.05em;
+            margin: 15px 0 10px 0;
+        }
+        .feedback-card p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #444;
         }
 
         /* Form styling */
@@ -186,6 +214,18 @@
         .ppt-btn:hover {
             background-color: #556c21;
         }
+
+        /* Rodapé visual centralizado no site */
+        .site-footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #6c8a2b;
+            text-align: center;
+        }
+        .site-footer img {
+            max-height: 50px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -196,13 +236,14 @@
         <img src="logo2.png" alt="GeNAI Logo" class="logo-genai">
         <div class="divider"></div>
         <p class="subtitle">Horizon Europe GeNAI</p>
-        <h1>Intervention Brainstorming</h1>
+        <h1>Intervention Brainstorming & Feedback</h1>
         <p class="partners"><strong>Lead:</strong> IE-UL (Instituto de Educação, ULisboa) &nbsp;|&nbsp; <strong>Co-Lead:</strong> UNIC</p>
     </div>
 
     <!-- TABS BUTTONS -->
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Overview')" id="defaultOpen">WP6</button>
+        <button class="tablinks" onclick="openTab(event, 'FeedbackResults')">Feedback & Results</button>
         <button class="tablinks" onclick="openTab(event, 'Template')">Brainstorming</button>
     </div>
 
@@ -220,7 +261,75 @@
         </ul>
     </div>
 
-    <!-- TAB 2: TEMPLATE FORM -->
+    <!-- TAB 2: FEEDBACK & RESULTS (TEXTOS COMPLETOS) -->
+    <div id="FeedbackResults" class="tabcontent wp6-intro">
+        <h2>Session 1 Feedback: Foundational AI</h2>
+        <div class="feedback-grid">
+            <div class="feedback-card">
+                <h3>Mathematics</h3>
+                <h4>Foundational AI</h4>
+                <p>Ask students what they already know about AI and their experiences working on this math topic. Provide a partially described situation and let students ask AI how it can be extended and solved. Have students generate good/bad or easy/difficult problems with AI and reflect on the prompts. Upload a list of tasks, categorize them, and reflect on the AI's output. Ask AI why the topic is relevant and compare AI-generated examples with student examples.</p>
+                <p><em>Reflection:</em> How do you use AI? Was prompting feedback helpful for cognitive off-loading? When do you turn to AI vs. the teacher?</p>
+            </div>
+            <div class="feedback-card">
+                <h3>Science</h3>
+                <h4>Foundational AI (What is Energy, Forms of Energy, Flow + Policy Debate)</h4>
+                <p>Start with a recent news item/article about alternative energy sources and political decisions. Use a media literacy framework and prompts to find science concepts.</p>
+                <p><em>Debate question:</em> “We should support our country's electricity supply using only one type/source of energy. Do you agree or not?”</p>
+            </div>
+            <div class="feedback-card">
+                <h3>I-STEM</h3>
+                <h4>Foundational AI</h4>
+                <p>Connect the problem to what students know (home/school) and socio-scientific issues. Use the design cycle to state questions about the situation to improve. Concepts: energy transition.</p>
+                <p>Connect to what students know about prompting AI from an engineering/math POV → Make questions describing the problem → Reformulate into prompts. Use interviews and platform AI.</p>
+            </div>
+        </div>
+
+        <h2>Session 2 Feedback: Critical AI Literacy</h2>
+        <div class="feedback-grid">
+            <div class="feedback-card">
+                <h3>Mathematics</h3>
+                <h4>Critical AI Literacy</h4>
+                <p>Use a faulty AI platform. Task: Look at a direct/indirect proportion task from the textbook and ask AI to solve it. <em>Why do you trust the answer? What reasons could you think of to criticize it?</em> Show a typical mistake generated by AI. Compare two AI environments (one faulty) and determine which is which (simulated via worksheet). Address typical variable or function/graph misconceptions. Create a checklist for evaluating AI output.</p>
+                <p><em>Reflection:</em> Was the feedback on critical AI use helpful?</p>
+            </div>
+            <div class="feedback-card">
+                <h3>Science</h3>
+                <h4>Critical AI Literacy (Misconceptions, Sustainability/Solar, and Claim-Checking)</h4>
+                <p>Work on misconceptions that “we” have (e.g., about energy or recycling plastics). This session will use <em>normal</em> (not intentionally flawed) AI.</p>
+                <p>Students will confront truth in relation to AI, checking claims from Session 1. Focus on critical thinking, checking factual information and argumentation of AI results to figure out useful vs. unuseful information.</p>
+            </div>
+            <div class="feedback-card">
+                <h3>I-STEM</h3>
+                <h4>Critical AI Literacy</h4>
+                <p>Using the platform, students experience “AI misconceptions” which will “restrict” the design process (viewed as both an advantage and disadvantage).</p>
+                <p>Look at data to interpret efficiency (e.g., using different solar panels in different situations, qualities, angles, hours). Data sets can come from outside or own observations.</p>
+            </div>
+        </div>
+
+        <h2>Session 3 Feedback: Authentic Inquiry</h2>
+        <div class="feedback-grid">
+            <div class="feedback-card">
+                <h3>Mathematics</h3>
+                <h4>Authentic Inquiry</h4>
+                <p>Give a problem in a form that cannot be immediately prompted into AI to get an answer. Provide a real-life situation with data (or a newspaper message) and ask students to describe/predict. Address the “modeling circle” with a problem situation containing missing/superfluous info (Fermi problems) and ask what assumptions must be made. Ask students to prepare a worksheet on an authentic problem for peers.</p>
+                <p><em>Reflection:</em> Was AI helpful during inquiry processes?</p>
+            </div>
+            <div class="feedback-card">
+                <h3>Science</h3>
+                <h4>Authentic Inquiry (Real-World STEM Problem-Solving)</h4>
+                <p>Final task: Create a tangible result (an article, poster, letter, or presentation) representing well-thought-out advice for the future, directed to the local city council or regarding personal daily decisions. Utilizes digital skills.</p>
+            </div>
+            <div class="feedback-card">
+                <h3>I-STEM</h3>
+                <h4>Authentic Inquiry</h4>
+                <p>Organized as a hackathon. Prototype for the school addressing STEM quality aspects (energy, graphs). Pitch to the board of the school.</p>
+                <p>Explore: <em>Does AI enrich these tasks?</em> Presentations are evaluated by a jury of experts (humans and AI-systems).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: TEMPLATE FORM -->
     <div id="Template" class="tabcontent template-form">
         <h2>Intervention Development Form</h2>
         
@@ -238,7 +347,7 @@
                 </select>
 
                 <label>WORKING GROUP</label>
-                <input type="text" name="authorName" id="authorName" placeholder="e.g. John Do" required>
+                <input type="text" name="authorName" id="authorName" placeholder="e.g. John Doe" required>
 
                 <label>TOPIC</label>
                 <input type="text" name="moduleNumber" id="moduleNumber" placeholder="e.g. Energy">
@@ -294,6 +403,11 @@
 
         <button type="button" class="ppt-btn" onclick="generatePPT()">Generate & Download Presentation (.pptx)</button>
     </div>
+
+    <!-- RODAPÉ VISUAL CENTRALIZADO NO SITE -->
+    <div class="site-footer">
+        <img src="rodape.png" alt="Rodapé Institucional">
+    </div>
 </div>
 
 <script>
@@ -339,7 +453,7 @@ function submitForm(event) {
         });
 }
 
-// Gerar e descarregar o PowerPoint com o design ajustado (fundo branco + rodape.png)
+// Gerar e descarregar o PowerPoint com o design ajustado (rodape.png centrado)
 function generatePPT() {
     if (typeof PptxGenJS === 'undefined') {
         alert("The PowerPoint library is still loading or network connection failed. Please try again in a moment.");
@@ -365,34 +479,18 @@ function generatePPT() {
     let platformNeeds = document.getElementById("platformNeeds").value || "";
     let resources = document.getElementById("resources").value || "";
 
-    // Rodapé institucional com o traço verde superior, logo UE, imagem 'rodape.png' e logo GeNAI
+    // Rodapé institucional com o traço verde superior e a imagem 'rodape.png' centrada
     function addStandardFooter(slide) {
-        // Linha/traço verde separador do rodapé
         slide.addShape(pptx.ShapeType.line, { x: 0.8, y: 4.7, w: 8.4, h: 0, line: { color: "6C8A2B", width: 2 } });
 
-        // 1. Emblema UE (canto inferior esquerdo)
         try {
-            slide.addImage({ path: "eu_flag.png", x: 0.8, y: 4.83, w: 1.5, h: 0.55 });
-        } catch(e) {
-            slide.addText("Funded by the European Union", { x: 0.8, y: 4.95, fontSize: 8, color: "003399", bold: true });
-        }
-
-        // 2. Imagem 'rodape.png' na zona central do rodapé
-        try {
-            slide.addImage({ path: "rodape.png", x: 3.5, y: 4.83, w: 3, h: 0.55 });
+            slide.addImage({ path: "rodape.png", x: 3.0, y: 4.83, w: 4.0, h: 0.55 });
         } catch(e) {
             slide.addText("[ rodape.png ]", { x: 3.5, y: 4.95, fontSize: 8, color: "888888", italic: true });
         }
-
-        // 3. Logótipo GeNAI (canto inferior direito)
-        try {
-            slide.addImage({ path: "logo2.png", x: 7.8, y: 4.83, w: 1.4, h: 0.58 });
-        } catch(e) {
-            slide.addText("GeNAI", { x: 8.2, y: 4.9, fontSize: 16, color: "1C3D72", bold: true });
-        }
     }
 
-    // 1. SLIDE DE TÍTULO (Capa em fundo branco)
+    // 1. SLIDE DE TÍTULO (Capa)
     let slide1 = pptx.addSlide();
     slide1.background = { color: "FFFFFF" };
 
@@ -404,20 +502,20 @@ function generatePPT() {
 
     slide1.addShape(pptx.ShapeType.line, { x: 0.8, y: 2.5, w: 8.4, h: 0, line: { color: "1C3D72", width: 2.5 } });
 
-    slide1.addText("The Intervention Brainstorming", { x: 1.0, y: 2.8, fontSize: 16, color: "6C8A2B", bold: true, italic: true, align: "center", w: "80%" });
+    slide1.addText("Intervention Design & Co-Creation", { x: 1.0, y: 2.8, fontSize: 16, color: "6C8A2B", bold: true, italic: true, align: "center", w: "80%" });
     slide1.addText("Topic: " + moduleNumber, { x: 1.0, y: 3.2, fontSize: 18, color: "6C8A2B", bold: true, align: "center", w: "80%" });
     slide1.addText("Working Group: " + authorName + (leadPartner ? " | " + leadPartner : ""), { x: 1.0, y: 4.0, fontSize: 12, color: "555555", align: "center", w: "80%" });
     
     addStandardFooter(slide1);
 
-    // 2. SLIDE DE TOPIC & CURRICULUM INTEGRATION (Fundo branco)
+    // 2. SLIDE DE TOPIC & CURRICULUM INTEGRATION
     let slide2 = pptx.addSlide();
     slide2.background = { color: "FFFFFF" };
     slide2.addText("Topic & Curriculum Integration", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
     slide2.addText(topicIntegration, { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.1" });
     addStandardFooter(slide2);
 
-    // 3. SLIDE DE LEARNING GOALS & GENERAL DESCRIPTION (Fundo branco)
+    // 3. SLIDE DE LEARNING GOALS & GENERAL DESCRIPTION
     let slide3 = pptx.addSlide();
     slide3.background = { color: "FFFFFF" };
     slide3.addText("Learning Goals & General Description", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
@@ -427,35 +525,31 @@ function generatePPT() {
     ], { x: 0.8, y: 1.2, fontSize: 11, color: "333333", w: "85%", h: "3.3" });
     addStandardFooter(slide3);
 
-    // 4. SLIDE DA SESSÃO 1 (Fundo branco)
+    // 4. SLIDE DA SESSÃO 1
     let slide4 = pptx.addSlide();
     slide4.background = { color: "FFFFFF" };
     slide4.addText("Session 1: Foundational AI Interaction", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
     slide4.addText(session1, { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.1" });
     addStandardFooter(slide4);
 
-    // 5. SLIDE DA SESSÃO 2 (Fundo branco)
+    // 5. SLIDE DA SESSÃO 2
     let slide5 = pptx.addSlide();
     slide5.background = { color: "FFFFFF" };
     slide5.addText("Session 2: Critical AI Literacy", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
     slide5.addText(session2, { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.1" });
     addStandardFooter(slide5);
 
-    // 6. SLIDE DA SESSÃO 3(Fundo branco)
-     let slide6 = pptx.addSlide();
+    // 6. SLIDE DA SESSÃO 3 E LOGÍSTICA
+    let slide6 = pptx.addSlide();
     slide6.background = { color: "FFFFFF" };
-    slide6.addText("Session 3, Authentic Inquiry", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
-    slide6.addText(session3, { x: 0.8, y: 1.3, fontSize: 11, color: "333333", w: "85%", h: "3.1" });
-    addStandardFooter(slide6);
-     // 7. SLIDE DA SESSÃO (Fundo branco) 
-    let slide7 = pptx.addSlide();
-    slide7.background = { color: "FFFFFF" };
-    slide7.addText("Material and Logistics", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
-      slide7.addText([
-                 { text: "Platform Needs: ", options: { bold: true } }, { text: platformNeeds + "\n", options: { fontSize: 10 } },
+    slide6.addText("Session 3, Platform & Logistics", { x: 0.8, y: 0.5, fontSize: 22, color: "1C3D72", bold: true });
+    slide6.addText([
+        { text: "3. Authentic Inquiry:\n", options: { bold: true, color: "6C8A2B" } },
+        { text: session3 + "\n\n", options: { fontSize: 10, color: "333333" } },
+        { text: "Platform Needs: ", options: { bold: true } }, { text: platformNeeds + "\n", options: { fontSize: 10 } },
         { text: "Resources Needed: ", options: { bold: true } }, { text: resources, options: { fontSize: 10 } }
     ], { x: 0.8, y: 1.2, w: "85%", h: "3.3" });
-    addStandardFooter(slide7);
+    addStandardFooter(slide6);
 
     let fileName = moduleNumber.replace(/[^a-z0-9]/gi, '_').toLowerCase() + "_presentation.pptx";
     pptx.writeFile({ fileName: fileName });
